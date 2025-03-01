@@ -14,67 +14,59 @@
         h1, h2, p, label, button {
             font-family: 'PixelMplus10', sans-serif;
         }
+        
+        /* Loading Screen */
+        #loading-screen {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            z-index: 9999;
+        }
+        #progress-bar {
+            width: 80%;
+            height: 20px;
+            background: #ddd;
+            margin-top: 10px;
+            border: 2px solid #475b7d;
+            position: relative;
+        }
+        #progress {
+            width: 0%;
+            height: 100%;
+            background: #475b7d;
+        }
     </style>
     <script>
-        const translations = {
-            en: {
-                title: "-eykse's page",
-                explore: "Welcome to the Birdie Convini!",
-                gallery: "Gallery",
-                commissions: "Commissions",
-                commissionDetails: "Details on how to commission artwork, pricing, and availability calendar.",
-                contact: "Contact Me",
-                name: "Name:",
-                email: "Email:",
-                message: "Message:",
-                send: "Send",
-            },
-            zh: {
-                title: "-eykse的页面",
-                explore: "欢迎来到小鸟便利店！",
-                gallery: "画廊",
-                commissions: "委托",
-                commissionDetails: "如何委托艺术作品、定价和可用性日历的详细信息。",
-                contact: "联系我",
-                name: "姓名：",
-                email: "电子邮件：",
-                message: "留言：",
-                send: "发送",
-            },
-            ja: {
-                title: "-eykseのページ",
-                explore: "バーディーコンビニへようこそ！",
-                gallery: "ギャラリー",
-                commissions: "コミッション",
-                commissionDetails: "アート依頼の詳細、価格、利用可能なスケジュール。",
-                contact: "お問い合わせ",
-                name: "名前：",
-                email: "メール：",
-                message: "メッセージ：",
-                send: "送信",
-            }
-        };
-
-        function switchLanguage() {
-            let currentLang = document.documentElement.lang;
-            let newLang = currentLang === "en" ? "zh" : currentLang === "zh" ? "ja" : "en";
-            document.documentElement.lang = newLang;
-            
-            document.querySelector("h1").textContent = translations[newLang].title;
-            document.querySelector("#hero h2").textContent = "いらっしゃいませ～❗❗";
-            document.querySelector("#hero p").textContent = translations[newLang].explore;
-            document.querySelector("#gallery h2").textContent = translations[newLang].gallery;
-            document.querySelector("#commissions h2").textContent = translations[newLang].commissions;
-            document.querySelector("#commissions p").textContent = translations[newLang].commissionDetails;
-            document.querySelector("#contact h2").textContent = translations[newLang].contact;
-            document.querySelector("label[for='name']").textContent = translations[newLang].name;
-            document.querySelector("label[for='email']").textContent = translations[newLang].email;
-            document.querySelector("label[for='message']").textContent = translations[newLang].message;
-            document.querySelector("button[type='submit']").textContent = translations[newLang].send;
-        }
+        document.addEventListener("DOMContentLoaded", function () {
+            let progress = 0;
+            let interval = setInterval(() => {
+                progress += 10;
+                document.getElementById("progress").style.width = progress + "%";
+                document.getElementById("progress-text").textContent = progress + "%";
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    document.getElementById("loading-screen").style.display = "none";
+                }
+            }, 200);
+        });
     </script>
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <p>Loading...</p>
+        <div id="progress-bar">
+            <div id="progress"></div>
+        </div>
+        <p id="progress-text">0%</p>
+    </div>
+    
     <header>
         <h1>-eykse's page</h1>
         <nav>
