@@ -9,11 +9,73 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            color: #475b7d;
         }
         h1, h2 {
             font-family: 'Press Start 2P', cursive;
         }
     </style>
+    <script>
+        const translations = {
+            en: {
+                title: "-eykse's page",
+                welcome: "Welcome to my art portfolio!",
+                explore: "Explore my artworks and commission your own custom piece.",
+                gallery: "Gallery",
+                commissions: "Commissions",
+                commissionDetails: "Details on how to commission artwork, pricing, and availability calendar.",
+                contact: "Contact Me",
+                name: "Name:",
+                email: "Email:",
+                message: "Message:",
+                send: "Send",
+            },
+            zh: {
+                title: "-eykse的页面",
+                welcome: "欢迎来到我的艺术作品集！",
+                explore: "探索我的艺术作品，并定制属于你的专属作品。",
+                gallery: "画廊",
+                commissions: "委托",
+                commissionDetails: "如何委托艺术作品、定价和可用性日历的详细信息。",
+                contact: "联系我",
+                name: "姓名：",
+                email: "电子邮件：",
+                message: "留言：",
+                send: "发送",
+            },
+            ja: {
+                title: "-eykseのページ",
+                welcome: "私のアートポートフォリオへようこそ！",
+                explore: "私の作品を探索し、あなただけの特別なアートを依頼してください。",
+                gallery: "ギャラリー",
+                commissions: "コミッション",
+                commissionDetails: "アート依頼の詳細、価格、利用可能なスケジュール。",
+                contact: "お問い合わせ",
+                name: "名前：",
+                email: "メール：",
+                message: "メッセージ：",
+                send: "送信",
+            }
+        };
+
+        function switchLanguage() {
+            let currentLang = document.documentElement.lang;
+            let newLang = currentLang === "en" ? "zh" : currentLang === "zh" ? "ja" : "en";
+            document.documentElement.lang = newLang;
+            
+            document.querySelector("h1").textContent = translations[newLang].title;
+            document.querySelector("#hero h2").textContent = translations[newLang].welcome;
+            document.querySelector("#hero p").textContent = translations[newLang].explore;
+            document.querySelector("#gallery h2").textContent = translations[newLang].gallery;
+            document.querySelector("#commissions h2").textContent = translations[newLang].commissions;
+            document.querySelector("#commissions p").textContent = translations[newLang].commissionDetails;
+            document.querySelector("#contact h2").textContent = translations[newLang].contact;
+            document.querySelector("label[for='name']").textContent = translations[newLang].name;
+            document.querySelector("label[for='email']").textContent = translations[newLang].email;
+            document.querySelector("label[for='message']").textContent = translations[newLang].message;
+            document.querySelector("button[type='submit']").textContent = translations[newLang].send;
+        }
+    </script>
 </head>
 <body>
     <header>
@@ -23,7 +85,7 @@
                 <li><a href="#gallery">Gallery</a></li>
                 <li><a href="#commissions">Commissions</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><button id="language-switch">🌍 Switch Language</button></li>
+                <li><button id="language-switch" onclick="switchLanguage()">🌍 Switch Language</button></li>
             </ul>
         </nav>
     </header>
