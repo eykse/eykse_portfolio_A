@@ -8,10 +8,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Press Start 2P', cursive;
             color: #475b7d;
         }
-        h1, h2 {
+        h1, h2, p, label, button {
             font-family: 'Press Start 2P', cursive;
         }
     </style>
@@ -19,8 +19,7 @@
         const translations = {
             en: {
                 title: "-eykse's page",
-                welcome: "Welcome to my art portfolio!",
-                explore: "Explore my artworks and commission your own custom piece.",
+                explore: "Welcome to the Birdie Convini!",
                 gallery: "Gallery",
                 commissions: "Commissions",
                 commissionDetails: "Details on how to commission artwork, pricing, and availability calendar.",
@@ -32,8 +31,7 @@
             },
             zh: {
                 title: "-eykse的页面",
-                welcome: "欢迎来到我的艺术作品集！",
-                explore: "探索我的艺术作品，并定制属于你的专属作品。",
+                explore: "欢迎来到小鸟便利店！",
                 gallery: "画廊",
                 commissions: "委托",
                 commissionDetails: "如何委托艺术作品、定价和可用性日历的详细信息。",
@@ -45,8 +43,7 @@
             },
             ja: {
                 title: "-eykseのページ",
-                welcome: "私のアートポートフォリオへようこそ！",
-                explore: "私の作品を探索し、あなただけの特別なアートを依頼してください。",
+                explore: "バーディーコンビニへようこそ！",
                 gallery: "ギャラリー",
                 commissions: "コミッション",
                 commissionDetails: "アート依頼の詳細、価格、利用可能なスケジュール。",
@@ -64,7 +61,7 @@
             document.documentElement.lang = newLang;
             
             document.querySelector("h1").textContent = translations[newLang].title;
-            document.querySelector("#hero h2").textContent = translations[newLang].welcome;
+            document.querySelector("#hero h2").textContent = "いらっしゃいませ～❗❗";
             document.querySelector("#hero p").textContent = translations[newLang].explore;
             document.querySelector("#gallery h2").textContent = translations[newLang].gallery;
             document.querySelector("#commissions h2").textContent = translations[newLang].commissions;
@@ -91,8 +88,8 @@
     </header>
     
     <section id="hero">
-        <h2>Welcome to my art portfolio!</h2>
-        <p>Explore my artworks and commission your own custom piece.</p>
+        <h2>いらっしゃいませ～❗❗</h2>
+        <p>Welcome to the Birdie Convini!</p>
     </section>
     
     <section id="gallery">
