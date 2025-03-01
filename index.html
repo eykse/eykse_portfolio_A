@@ -8,7 +8,7 @@
     <style>
         @font-face {
             font-family: 'Zpix';
-            src: url('fonts/Zpix.ttf') format('truetype');
+            src: url('./fonts/Zpix.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
         }
@@ -18,6 +18,14 @@
         }
         h1, h2, p, label, button {
             font-family: 'Zpix', sans-serif;
+        }
+        
+        /* Adjust spacing between header and body text */
+        #hero h2 {
+            margin-bottom: 0px;
+        }
+        #hero p {
+            margin-top: 5px;
         }
         
         /* Loading Screen */
@@ -60,6 +68,26 @@
                 }
             }, 200);
         });
+
+        function switchLanguage() {
+            const langText = {
+                "en": "Welcome to the Birdie Convini!",
+                "zh": "欢迎来到小鸟便利店！",
+                "ja": "ピヨピヨコンビニへようこそ！"
+            };
+            
+            const currentLang = document.documentElement.lang;
+            let newLang;
+            if (currentLang === "en") {
+                newLang = "zh";
+            } else if (currentLang === "zh") {
+                newLang = "ja";
+            } else {
+                newLang = "en";
+            }
+            document.documentElement.lang = newLang;
+            document.getElementById("hero-text").textContent = langText[newLang];
+        }
     </script>
 </head>
 <body>
@@ -86,7 +114,7 @@
     
     <section id="hero">
         <h2>いらっしゃいませ～❗❗</h2>
-        <p>Welcome to the Birdie Convini!</p>
+        <p id="hero-text">Welcome to the Birdie Convini!</p>
     </section>
     
     <section id="gallery">
