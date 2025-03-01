@@ -76,29 +76,53 @@
                 "ja": "ピヨピヨコンビニへようこそ！"
             };
             
+            const elementsToTranslate = document.querySelectorAll("[data-translate]");
+            const translations = {
+                "en": {
+                    "gallery": "Gallery",
+                    "commissions": "Commissions",
+                    "contact": "Contact Me",
+                    "details": "Details on how to commission artwork, pricing, and availability calendar.",
+                    "artwork": "Artwork previews will go here.",
+                    "name": "Name:",
+                    "email": "Email:",
+                    "message": "Message:",
+                    "send": "Send"
+                },
+                "zh": {
+                    "gallery": "画廊",
+                    "commissions": "委托",
+                    "contact": "联系我",
+                    "details": "关于如何委托艺术作品、价格和可用性日历的详细信息。",
+                    "artwork": "艺术作品预览将在这里显示。",
+                    "name": "姓名:",
+                    "email": "电子邮件:",
+                    "message": "留言:",
+                    "send": "发送"
+                },
+                "ja": {
+                    "gallery": "ギャラリー",
+                    "commissions": "コミッション",
+                    "contact": "お問い合わせ",
+                    "details": "アートワークの依頼方法、価格、利用可能なカレンダーの詳細です。",
+                    "artwork": "アートワークのプレビューはこちらに表示されます。",
+                    "name": "名前:",
+                    "email": "メール:",
+                    "message": "メッセージ:",
+                    "send": "送信"
+                }
+            };
+            
             const currentLang = document.documentElement.lang;
-            let newLang;
-            if (currentLang === "en") {
-                newLang = "zh";
-            } else if (currentLang === "zh") {
-                newLang = "ja";
-            } else {
-                newLang = "en";
-            }
+            let newLang = currentLang === "en" ? "zh" : currentLang === "zh" ? "ja" : "en";
             document.documentElement.lang = newLang;
             document.getElementById("hero-text").textContent = langText[newLang];
+            
+            elementsToTranslate.forEach(el => {
+                el.textContent = translations[newLang][el.dataset.translate];
+            });
         }
     </script>
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                includedLanguages: 'en,zh-CN,ja',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-            }, 'google_translate_element');
-        }
-    </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </head>
 <body>
     <!-- Loading Screen -->
@@ -114,13 +138,12 @@
         <h1>-eykse's page</h1>
         <nav>
             <ul>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#commissions">Commissions</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#gallery" data-translate="gallery">Gallery</a></li>
+                <li><a href="#commissions" data-translate="commissions">Commissions</a></li>
+                <li><a href="#contact" data-translate="contact">Contact</a></li>
                 <li><button id="language-switch" onclick="switchLanguage()">🌍 Switch Language</button></li>
             </ul>
         </nav>
-        <div id="google_translate_element"></div>
     </header>
     
     <section id="hero">
@@ -129,28 +152,28 @@
     </section>
     
     <section id="gallery">
-        <h2>Gallery</h2>
-        <p>Artwork previews will go here.</p>
+        <h2 data-translate="gallery">Gallery</h2>
+        <p data-translate="artwork">Artwork previews will go here.</p>
     </section>
     
     <section id="commissions">
-        <h2>Commissions</h2>
-        <p>Details on how to commission artwork, pricing, and availability calendar.</p>
+        <h2 data-translate="commissions">Commissions</h2>
+        <p data-translate="details">Details on how to commission artwork, pricing, and availability calendar.</p>
     </section>
     
     <section id="contact">
-        <h2>Contact Me</h2>
+        <h2 data-translate="contact">Contact Me</h2>
         <form>
-            <label for="name">Name:</label>
+            <label for="name" data-translate="name">Name:</label>
             <input type="text" id="name" name="name" required>
             
-            <label for="email">Email:</label>
+            <label for="email" data-translate="email">Email:</label>
             <input type="email" id="email" name="email" required>
             
-            <label for="message">Message:</label>
+            <label for="message" data-translate="message">Message:</label>
             <textarea id="message" name="message" required></textarea>
             
-            <button type="submit">Send</button>
+            <button type="submit" data-translate="send">Send</button>
         </form>
     </section>
     
